@@ -1,122 +1,154 @@
 # Efficiency vs Performance PEFT Research
 
-## Overview
-This repository presents a **systematic benchmarking study** of Parameter-Efficient Fine-Tuning (PEFT) techniques compared to full fine-tuning using DistilBERT.
-
-The project evaluates how different PEFT methods balance:
-- model performance
-- computational efficiency
-- training cost
-- stability across runs
-
-The goal is to provide **practical insights for selecting fine-tuning strategies under resource constraints**.
+![Python](https://img.shields.io/badge/Python-3.10+-blue)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.x-orange)
+![Transformers](https://img.shields.io/badge/HuggingFace-Transformers-yellow)
+![Status](https://img.shields.io/badge/Status-Completed-success)
+![License](https://img.shields.io/badge/License-MIT-green)
 
 ---
 
-## Key Highlights
+## 📌 Overview
 
-- Benchmarking of **Full Fine-Tuning vs PEFT methods**
-- Evaluation on **multiple NLP datasets**
-- **Multi-seed experimentation** for robustness
-- **Statistical validation** (Bootstrap CI, McNemar’s Test)
-- Detailed **efficiency metrics** (time, memory, parameters)
+This repository presents a **research-driven empirical analysis** of **Parameter-Efficient Fine-Tuning (PEFT)** methods compared to full fine-tuning using **DistilBERT**.
+
+The project benchmarks how different fine-tuning strategies trade off:
+
+- 📊 Model performance  
+- ⚡ Computational efficiency  
+- 💾 Resource utilization  
+- 🔁 Stability across multiple runs  
+
+The goal is to provide **practical insights for deploying NLP models under resource constraints**.
 
 ---
 
-## Methods
+## 🎯 Objectives
 
-### Models
+- Compare **Full Fine-Tuning vs PEFT methods**
+- Analyze **efficiency vs accuracy trade-offs**
+- Evaluate **model stability using multi-seed experiments**
+- Perform **statistical validation of results**
+- Study performance across **multiple datasets**
+
+---
+
+## 🧠 Methods
+
+### 🔹 Neural Models
 - Full Fine-Tuning (DistilBERT)
+
+### 🔹 PEFT Techniques
 - LoRA (Low-Rank Adaptation)
 - Adapter Tuning
 - Prompt Tuning
 - Soft Prompt Tuning
 
-### Baselines
+### 🔹 Classical Baselines
 - TF-IDF + Logistic Regression
 - TF-IDF + Linear SVM
 - Zero-shot DistilBERT
 
 ---
 
-## Datasets
+## 📊 Datasets
 
-- SST-2 (Sentiment Classification)
-- AG News (Topic Classification)
-- Amazon Polarity (Cross-domain Sentiment)
+| Dataset | Task | Classes |
+|--------|------|--------|
+| SST-2 | Sentiment Classification | 2 |
+| AG News | Topic Classification | 4 |
+| Amazon Polarity | Sentiment (Cross-domain) | 2 |
 
 ---
 
-## Evaluation
+## ⚙️ Experimental Setup
+
+- Backbone Model: `distilbert-base-uncased`
+- Sequence Length: 128
+- Seeds: `[42, 0, 123]`
+- Data Split: Train / Validation / Test
+- Consistent preprocessing across all models
+
+---
+
+## 📈 Evaluation
 
 ### Performance Metrics
-- Accuracy
-- Macro F1 Score
+- Accuracy  
+- Macro F1 Score  
 
 ### Efficiency Metrics
-- Trainable parameters (%)
-- Training time
-- Inference latency
-- GPU memory usage
+- Trainable Parameters (%)  
+- Training Time  
+- Inference Latency  
+- GPU Memory Usage  
 
 ### Statistical Analysis
-- Multi-seed mean and variance
-- Bootstrap confidence intervals
-- McNemar’s significance test
+- Multi-seed mean ± standard deviation  
+- Bootstrap Confidence Intervals (n=1000)  
+- McNemar’s Significance Test  
 
 ---
 
-## Experimental Design
+## 🧪 Ablation Studies
 
-- Backbone: DistilBERT-base-uncased
-- Fixed seeds: `[42, 0, 123]`
-- Stratified splits (train/val/test)
-- Consistent preprocessing pipeline
-
----
-
-## Ablation Studies
-
-- Effect of dataset size (10%, 50%, 100%)
-- Impact of LoRA rank
-- Adapter dimension sensitivity
+- Dataset size: 10%, 50%, 100%  
+- LoRA rank variation  
+- Adapter dimension tuning  
 
 ---
 
-## Results (Summary)
+## 📊 Key Findings
 
 - LoRA achieves near full fine-tuning performance with significantly fewer parameters  
-- Adapter tuning provides strong performance-efficiency balance  
-- Prompt tuning underperforms on smaller models  
-- Multi-seed results highlight stability differences across methods  
+- Adapter tuning provides strong efficiency-performance balance  
+- Prompt tuning underperforms for smaller models like DistilBERT  
+- Multi-seed evaluation reveals stability differences across methods  
 
 ---
 
-## Project Structure
-├── notebooks/ # Main research workflow
-├── src/ # Modular implementation (models, training, evaluation)
-├── results/ # Metrics, logs, visualizations
-├── reports/ # Final report / documentation
+## 📁 Project Structure
+├── notebooks/ # Main experiment pipeline
+├── src/ # Modular code (models, training, evaluation)
+├── results/ # Metrics, plots, logs
+├── reports/ # Final research report
+├── requirements.txt
+├── README.md
+└── .gitignore
 
 
 ---
 
-## Installation
+## ⚙️ Installation
 
 ```bash
 git clone https://github.com/your-username/peft-efficiency-vs-performance.git
 cd peft-efficiency-vs-performance
 pip install -r requirements.txt
 
-Usage
-
 Run the main experiment pipeline:
 
-jupyter notebook notebooks/research_pipeline.ipynb
-Reproducibility
-Fixed random seeds across experiments
-Controlled experimental setup
-Results logged for verification
-Author
+jupyter notebook notebooks/EFFICENCY_VS_PERFORMANCE_PEFT_Research_PHASE_COMPLETE.ipynb
+
+
+🔬 Reproducibility
+Fixed random seeds across all experiments
+Controlled and consistent preprocessing
+Logged results for verification
+
+
+🧾 Requirements
+
+See requirements.txt
+
+Tested on:
+
+Python 3.10+
+🚀 Future Work
+Extend to larger transformer models (e.g., BERT, RoBERTa)
+Explore additional PEFT techniques
+Hyperparameter optimization
+Deployment benchmarking
+👤 Author
 
 Ali Ahmad
