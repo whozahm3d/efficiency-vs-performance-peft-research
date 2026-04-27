@@ -1,0 +1,15 @@
+{
+  "Model Name": "LoRA-DistilBERT-PEFT-Study",
+  "Version": "1.0 (research prototype)",
+  "Base Model": "distilbert-base-uncased (Sanh et al., 2019)",
+  "PEFT Method": "LoRA (r=8, alpha=16, dropout=0.1)",
+  "Trained Datasets": "SST-2, AG News, Amazon Polarity",
+  "Intended Use": "Text classification benchmarking; PEFT research",
+  "Out-of-scope": "Medical/legal/safety decisions; real-time production; non-English",
+  "Trainable Params": "739,586 (1.09% of full FT)",
+  "SST-2 Test F1": 0.8342,
+  "Known Biases": "Underperforms on negation-heavy text; domain-shifted evaluation may degrade",
+  "Evaluation Limits": "Evaluated on English text only; capped at 10K samples per dataset",
+  "Carbon Footprint": "Significantly reduced vs full FT due to fewer trainable parameters",
+  "Responsible Notes": "Model not suitable for deployment without further safety evaluation"
+}
