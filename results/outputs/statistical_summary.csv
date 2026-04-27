@@ -1,0 +1,25 @@
+method,method_key,dataset,is_multiseed,n_seeds,mean_acc,mean_f1,std_f1,ci_lo_95,ci_hi_95
+Full FT,full_ft,sst2,True,3,0.8916,0.8902,0.0019,0.8881,0.8917
+Full FT,full_ft,ag_news,True,3,0.918,0.9175,0.0028,0.9143,0.9196
+Full FT,full_ft,amazon,True,3,0.9077,0.9077,0.0006,0.907,0.908
+LoRA r=4,lora_r4,sst2,False,1,0.8406,0.838,0.0,,
+LoRA r=4,lora_r4,ag_news,False,1,0.8726,0.8717,0.0,,
+LoRA r=4,lora_r4,amazon,False,1,0.8616,0.8616,0.0,,
+LoRA r=8,lora_r8,sst2,True,3,0.8339,0.8308,0.0028,0.8276,0.8326
+LoRA r=8,lora_r8,ag_news,True,3,0.8653,0.8641,0.005,0.8592,0.8692
+LoRA r=8,lora_r8,amazon,True,3,0.8596,0.8596,0.0023,0.8576,0.8621
+LoRA r=16,lora_r16,sst2,False,1,0.8366,0.8336,0.0,,
+LoRA r=16,lora_r16,ag_news,False,1,0.8721,0.8712,0.0,,
+LoRA r=16,lora_r16,amazon,False,1,0.8596,0.8596,0.0,,
+LoRA r=32,lora_r32,sst2,False,1,0.8376,0.8348,0.0,,
+LoRA r=32,lora_r32,ag_news,False,1,0.8711,0.8702,0.0,,
+LoRA r=32,lora_r32,amazon,False,1,0.8611,0.8611,0.0,,
+Adapter,adapter,sst2,True,3,0.8519,0.8503,0.0023,0.8486,0.8529
+Adapter,adapter,ag_news,True,3,0.8406,0.8371,0.0313,0.8056,0.8682
+Adapter,adapter,amazon,True,3,0.8669,0.8669,0.0023,0.8656,0.8696
+Prompt Tuning,prompt_tuning,sst2,True,3,0.5944,0.4489,0.0284,0.423,0.4792
+Prompt Tuning,prompt_tuning,ag_news,True,3,0.8548,0.8531,0.019,0.8323,0.8696
+Prompt Tuning,prompt_tuning,amazon,True,3,0.7574,0.7567,0.0074,0.7482,0.7616
+Soft Prompt,soft_prompt,sst2,False,1,0.6142,0.4947,0.0,,
+Soft Prompt,soft_prompt,ag_news,False,1,0.8721,0.8711,0.0,,
+Soft Prompt,soft_prompt,amazon,False,1,0.7581,0.7571,0.0,,

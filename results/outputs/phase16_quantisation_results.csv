@@ -1,0 +1,2 @@
+fp32_lat_ms,int8_lat_ms,speedup_x,fp32_size_mb,int8_size_mb,size_reduction_pct,fp32_acc,int8_acc,acc_delta,dataset,model,method,dtype,layers
+237.5501,201.834,1.177,417.72,173.09,58.56,0.4871,0.5086,0.0214,sst2,bert-base-uncased,torch.quantization.quantize_dynamic,qint8,nn.Linear

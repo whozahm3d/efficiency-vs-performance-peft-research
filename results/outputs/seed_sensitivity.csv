@@ -1,0 +1,13 @@
+model,dataset,acc_mean,acc_std,acc_range,f1_mean,f1_std,f1_range,stability
+Full FT,sst2,0.8916,0.0018,0.0035,0.8902,0.0019,0.0036,High
+Full FT,ag_news,0.918,0.0026,0.005,0.9175,0.0028,0.0053,High
+Full FT,amazon,0.9077,0.0006,0.001,0.9077,0.0006,0.001,High
+LoRA r=8,sst2,0.8339,0.0025,0.0045,0.8308,0.0028,0.005,High
+LoRA r=8,ag_news,0.8653,0.0048,0.0095,0.8641,0.005,0.01,Medium
+LoRA r=8,amazon,0.8596,0.0023,0.0045,0.8596,0.0023,0.0045,High
+Adapter,sst2,0.8519,0.0024,0.0045,0.8503,0.0023,0.0043,High
+Adapter,ag_news,0.8406,0.0281,0.056,0.8371,0.0313,0.0626,Low
+Adapter,amazon,0.8669,0.0023,0.004,0.8669,0.0023,0.004,High
+Prompt Tuning,sst2,0.5944,0.0122,0.024,0.4489,0.0284,0.0562,Low
+Prompt Tuning,ag_news,0.8548,0.0187,0.0365,0.8531,0.019,0.0373,Low
+Prompt Tuning,amazon,0.7574,0.0077,0.0135,0.7567,0.0074,0.0134,Medium

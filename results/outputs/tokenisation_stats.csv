@@ -1,0 +1,4 @@
+dataset,mean_tokens,median_tokens,p95_tokens,pct_truncated
+sst2,13.4,10.0,33.0,0.0
+ag_news,53.4,51.0,82.0,0.6
+amazon,81.8,85.0,128.0,4.3

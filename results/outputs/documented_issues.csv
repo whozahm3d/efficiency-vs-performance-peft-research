@@ -1,0 +1,4 @@
+issue,location,effect,fix
+Val-as-test mischaracterisation,Phase 5 Cell 2; fixed in train_and_evaluate(),~1.39pp optimistic inflation on LoRA SST-2,Always evaluate on held-out test split; never use val for final reporting
+Biased ablation via list(range(n)),Phase 9; fixed in stratified_subset(),Up to 1.2pp class imbalance in ablation subsets,train_test_split(stratify=labels) for all ablation subsets
+Zero-shot mischaracterisation,Phase 5 Cell 2,Misleading comparison with true zero-shot systems,Label as MLM-score heuristic (no training) throughout

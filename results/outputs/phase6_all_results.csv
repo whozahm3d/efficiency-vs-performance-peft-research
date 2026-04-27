@@ -1,0 +1,34 @@
+method,method_key,method_type,dataset,trainable_params,pct_of_full_ft,accuracy,f1_macro,train_time_s,inference_ms,peak_gpu_mb
+TF-IDF + LR,tfidf_lr,Classical ML,sst2,30662,0.046,0.7946,0.7874,0.3,0.0002,0.0
+TF-IDF + SVM,tfidf_svm,Classical ML,sst2,30662,0.046,0.8151,0.8112,0.03,0.0001,0.0
+Zero-Shot,zero_shot,Zero-Shot,sst2,0,0.0,0.6882,0.6465,0.0,12.181,0.0
+Full FT,full_ft,Full FT,sst2,66955010,100.0,0.8991,0.8978,68.78,0.126,2225.6
+LoRA r=4,lora_r4,PEFT,sst2,665858,0.994,0.8406,0.838,54.87,0.172,1206.9
+LoRA r=8,lora_r8,PEFT,sst2,739586,1.105,0.8371,0.8342,56.03,0.214,1196.8
+LoRA r=16,lora_r16,PEFT,sst2,887042,1.325,0.8366,0.8336,56.84,0.234,1198.3
+LoRA r=32,lora_r32,PEFT,sst2,1181954,1.765,0.8376,0.8348,57.06,0.218,1204.9
+Adapter,adapter,PEFT,sst2,1209602,1.807,0.8531,0.8516,58.25,0.162,1283.3
+Prompt Tuning,prompt_tuning,PEFT,sst2,607490,0.907,0.5992,0.4596,51.86,0.119,1136.0
+Soft Prompt,soft_prompt,PEFT,sst2,607490,0.907,0.6142,0.4947,52.11,0.164,1138.0
+TF-IDF + LR,tfidf_lr,Classical ML,ag_news,80000,0.119,0.8956,0.8948,1.74,0.0008,0.0
+TF-IDF + SVM,tfidf_svm,Classical ML,ag_news,80000,0.119,0.8986,0.8978,0.17,0.0004,0.0
+Zero-Shot,zero_shot,Zero-Shot,ag_news,0,0.0,0.3993,0.3468,0.0,14.833,0.0
+Full FT,full_ft,Full FT,ag_news,66956548,100.002,0.9195,0.9191,72.53,0.127,2228.1
+LoRA r=4,lora_r4,PEFT,ag_news,667396,0.997,0.8726,0.8717,58.92,0.185,1194.4
+LoRA r=8,lora_r8,PEFT,ag_news,741124,1.107,0.8721,0.8712,58.92,0.176,1195.1
+LoRA r=16,lora_r16,PEFT,ag_news,888580,1.327,0.8721,0.8712,59.34,0.177,1198.3
+LoRA r=32,lora_r32,PEFT,ag_news,1183492,1.768,0.8711,0.8702,59.6,0.18,1204.9
+Adapter,adapter,PEFT,ag_news,1211140,1.809,0.8666,0.8648,59.98,0.169,1283.3
+Prompt Tuning,prompt_tuning,PEFT,ag_news,609028,0.91,0.8711,0.8701,54.84,0.117,1138.2
+Soft Prompt,soft_prompt,PEFT,ag_news,609028,0.91,0.8721,0.8711,54.97,0.128,1138.2
+TF-IDF + LR,tfidf_lr,Classical ML,amazon,40000,0.06,0.8436,0.8434,0.38,0.0004,0.0
+TF-IDF + SVM,tfidf_svm,Classical ML,amazon,40000,0.06,0.8451,0.8448,0.06,0.0003,0.0
+Zero-Shot,zero_shot,Zero-Shot,amazon,0,0.0,0.6447,0.6108,0.0,13.16,0.0
+Full FT,full_ft,Full FT,amazon,66955010,100.0,0.909,0.909,77.82,0.136,2225.6
+LoRA r=4,lora_r4,PEFT,amazon,665858,0.994,0.8616,0.8616,60.85,0.161,1194.4
+LoRA r=8,lora_r8,PEFT,amazon,739586,1.105,0.8586,0.8586,61.0,0.161,1195.0
+LoRA r=16,lora_r16,PEFT,amazon,887042,1.325,0.8596,0.8596,61.15,0.159,1198.3
+LoRA r=32,lora_r32,PEFT,amazon,1181954,1.765,0.8611,0.8611,61.09,0.168,1204.9
+Adapter,adapter,PEFT,amazon,1209602,1.807,0.8626,0.8626,61.56,0.179,1283.3
+Prompt Tuning,prompt_tuning,PEFT,amazon,607490,0.907,0.7346,0.7332,56.68,0.128,1138.2
+Soft Prompt,soft_prompt,PEFT,amazon,607490,0.907,0.7581,0.7571,56.63,0.115,1138.2

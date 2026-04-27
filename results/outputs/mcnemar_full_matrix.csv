@@ -1,0 +1,22 @@
+dataset,model_a,model_b,b01,b10,p_value,significant,cohens_h
+sst2,Full FT,LoRA r=4,155,38,0.0,True,0.1749
+sst2,Full FT,LoRA r=8,159,35,0.0,True,0.1844
+sst2,Full FT,LoRA r=16,161,36,0.0,True,0.1858
+sst2,Full FT,LoRA r=32,161,38,0.0,True,0.1831
+sst2,Full FT,Adapter,130,38,0.0,True,0.1402
+sst2,Full FT,Prompt Tuning,701,101,0.0,True,0.7246
+sst2,Full FT,Soft Prompt,674,104,0.0,True,0.6939
+ag_news,Full FT,LoRA r=4,131,37,0.0,True,0.1546
+ag_news,Full FT,LoRA r=8,129,34,0.0,True,0.1561
+ag_news,Full FT,LoRA r=16,128,33,0.0,True,0.1561
+ag_news,Full FT,LoRA r=32,129,32,0.0,True,0.1591
+ag_news,Full FT,Adapter,153,47,0.0,True,0.1724
+ag_news,Full FT,Prompt Tuning,140,43,0.0,True,0.1591
+ag_news,Full FT,Soft Prompt,134,39,0.0,True,0.1561
+amazon,Full FT,LoRA r=4,141,46,0.0,True,0.1495
+amazon,Full FT,LoRA r=8,145,44,0.0,True,0.1581
+amazon,Full FT,LoRA r=16,143,44,0.0,True,0.1553
+amazon,Full FT,LoRA r=32,142,46,0.0,True,0.1509
+amazon,Full FT,Adapter,128,35,0.0,True,0.1466
+amazon,Full FT,Prompt Tuning,429,80,0.0,True,0.4695
+amazon,Full FT,Soft Prompt,375,73,0.0,True,0.4155

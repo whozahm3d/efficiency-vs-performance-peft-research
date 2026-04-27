@@ -1,0 +1,25 @@
+method,dataset,ppl_proxy,f1_macro
+Full FT,sst2,1.34,0.8978
+LoRA r=4,sst2,1.4778,0.838
+LoRA r=8,sst2,1.491,0.8342
+LoRA r=16,sst2,1.5009,0.8336
+LoRA r=32,sst2,1.4914,0.8348
+Adapter,sst2,1.4442,0.8516
+Prompt Tuning,sst2,1.909,0.4596
+Soft Prompt,sst2,1.9069,0.4947
+Full FT,ag_news,1.2802,0.9191
+LoRA r=4,ag_news,1.9075,0.8717
+LoRA r=8,ag_news,1.8673,0.8712
+LoRA r=16,ag_news,1.856,0.8712
+LoRA r=32,ag_news,1.8439,0.8702
+Adapter,ag_news,2.0474,0.8648
+Prompt Tuning,ag_news,2.6066,0.8701
+Soft Prompt,ag_news,2.3598,0.8711
+Full FT,amazon,1.2836,0.909
+LoRA r=4,amazon,1.4662,0.8616
+LoRA r=8,amazon,1.4679,0.8586
+LoRA r=16,amazon,1.4829,0.8596
+LoRA r=32,amazon,1.4754,0.8611
+Adapter,amazon,1.4149,0.8626
+Prompt Tuning,amazon,1.8737,0.7332
+Soft Prompt,amazon,1.8177,0.7571

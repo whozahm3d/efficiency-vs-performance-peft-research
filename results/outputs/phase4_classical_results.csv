@@ -1,0 +1,7 @@
+method,dataset,phase,accuracy,f1_macro,val_accuracy,val_f1_macro,ppl_proxy,trainable_params,train_time_s,inference_ms_per_sample,peak_gpu_mb
+TF-IDF+LR,sst2,4,0.7946,0.7874,0.779,0.7713,N/A,30662,0.3,0.0002,0.0
+TF-IDF+LR,ag_news,4,0.8956,0.8948,0.887,0.8864,N/A,80000,1.74,0.0008,0.0
+TF-IDF+LR,amazon,4,0.8436,0.8434,0.846,0.8459,N/A,40000,0.38,0.0004,0.0
+TF-IDF+SVM,sst2,4,0.8151,0.8112,0.799,0.7944,N/A,30662,0.03,0.0001,0.0
+TF-IDF+SVM,ag_news,4,0.8986,0.8978,0.898,0.8977,N/A,80000,0.17,0.0004,0.0
+TF-IDF+SVM,amazon,4,0.8451,0.8448,0.842,0.8419,N/A,40000,0.06,0.0003,0.0

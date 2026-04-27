@@ -1,0 +1,7 @@
+method,dataset,phase,accuracy,f1_macro,ppl_proxy,trainable_params,train_time_s,inference_ms_per_sample,peak_gpu_mb,note,best_val_f1,best_val_loss,total_params,pct_trainable
+Zero-Shot,sst2,5,0.6882,0.6465,N/A,0,0.0,12.181,0.0,"MLM-score heuristic (NOT true zero-shot). Evaluated on full test set (2001 samples). Candidate words: ['negative', 'bad'] vs ['positive', 'good'].",,,,
+Zero-Shot,ag_news,5,0.3993,0.3468,N/A,0,0.0,14.833,0.0,"MLM-score heuristic (NOT true zero-shot). Evaluated on full test set (2001 samples). Candidate words: ['world', 'global'] vs ['sports', 'game'].",,,,
+Zero-Shot,amazon,5,0.6447,0.6108,N/A,0,0.0,13.16,0.0,"MLM-score heuristic (NOT true zero-shot). Evaluated on full test set (2001 samples). Candidate words: ['negative', 'bad'] vs ['positive', 'good'].",,,,
+Full FT,sst2,5,0.8991,0.8978,1.34,66955010,68.78,0.126,2225.6,,0.8922,0.3,66955010.0,100.0
+Full FT,ag_news,5,0.9195,0.9191,1.2802,66956548,72.53,0.127,2228.1,,0.9087,0.265,66956548.0,100.0
+Full FT,amazon,5,0.909,0.909,1.2836,66955010,77.82,0.136,2225.6,,0.9079,0.2481,66955010.0,100.0

@@ -1,0 +1,9 @@
+dataset,label,label_name,n_before,pct_before,n_train,pct_train,n_test,pct_test,drift_pp
+sst2,0,Negative,29780,44.22,3095,44.22,885,44.23,0.0
+sst2,1,Positive,37569,55.78,3904,55.78,1116,55.77,0.0
+ag_news,0,World,30000,25.0,1750,25.0,500,24.99,0.0
+ag_news,1,Sports,30000,25.0,1750,25.0,500,24.99,0.0
+ag_news,2,Business,30000,25.0,1749,24.99,501,25.04,0.01
+ag_news,3,Sci/Tech,30000,25.0,1750,25.0,500,24.99,0.0
+amazon,0,Negative,38985,48.73,3411,48.74,975,48.73,0.0
+amazon,1,Positive,41015,51.27,3588,51.26,1026,51.27,0.0

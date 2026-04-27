@@ -1,0 +1,4 @@
+dataset,model_a,model_b,b01,b10,p_value,significant,interpretation,ft_f1,lora_f1
+sst2,Full FT,LoRA r=8,160,44,0.0,True,Statistically significant (p < 0.05),0.8917,0.8322
+ag_news,Full FT,LoRA r=8,153,36,0.0,True,Statistically significant (p < 0.05),0.9186,0.8592
+amazon,Full FT,LoRA r=8,149,50,0.0,True,Statistically significant (p < 0.05),0.907,0.8576

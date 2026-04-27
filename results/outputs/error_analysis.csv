@@ -1,0 +1,15 @@
+model,dataset,error_type,count,pct,total_errors,error_rate
+Full FT,sst2,Short/Ambiguous,111,54.95,202,10.09
+Full FT,sst2,Complex Sentiment,67,33.17,202,10.09
+Full FT,sst2,Negation Error,15,7.43,202,10.09
+Full FT,sst2,Contrastive/Mixed Sentiment,9,4.46,202,10.09
+LoRA r=8,sst2,Short/Ambiguous,156,47.85,326,16.29
+LoRA r=8,sst2,Complex Sentiment,120,36.81,326,16.29
+LoRA r=8,sst2,Negation Error,26,7.98,326,16.29
+LoRA r=8,sst2,Contrastive/Mixed Sentiment,24,7.36,326,16.29
+Full FT,amazon,Negation Error,114,62.64,182,9.1
+Full FT,amazon,Complex Sentiment,50,27.47,182,9.1
+Full FT,amazon,Contrastive/Mixed Sentiment,18,9.89,182,9.1
+LoRA r=8,amazon,Negation Error,188,66.43,283,14.14
+LoRA r=8,amazon,Complex Sentiment,58,20.49,283,14.14
+LoRA r=8,amazon,Contrastive/Mixed Sentiment,37,13.07,283,14.14

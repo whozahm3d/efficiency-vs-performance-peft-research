@@ -1,0 +1,34 @@
+method,method_key,method_type,dataset,dataset_display,accuracy,f1_macro,ppl_proxy,trainable_params,pct_of_full_ft,train_time_s,inference_ms,peak_gpu_mb
+TF-IDF + LR,tfidf_lr,Classical ML,sst2,SST-2,0.7946,0.7874,N/A,30662,0.046,0.3,0.0002,0.0
+TF-IDF + LR,tfidf_lr,Classical ML,ag_news,AG News,0.8956,0.8948,N/A,80000,0.119,1.74,0.0008,0.0
+TF-IDF + LR,tfidf_lr,Classical ML,amazon,Amazon Polarity,0.8436,0.8434,N/A,40000,0.06,0.38,0.0004,0.0
+TF-IDF + SVM,tfidf_svm,Classical ML,sst2,SST-2,0.8151,0.8112,N/A,30662,0.046,0.03,0.0001,0.0
+TF-IDF + SVM,tfidf_svm,Classical ML,ag_news,AG News,0.8986,0.8978,N/A,80000,0.119,0.17,0.0004,0.0
+TF-IDF + SVM,tfidf_svm,Classical ML,amazon,Amazon Polarity,0.8451,0.8448,N/A,40000,0.06,0.06,0.0003,0.0
+Zero-Shot,zero_shot,Zero-Shot,sst2,SST-2,0.6882,0.6465,N/A,0,0.0,0.0,12.181,0.0
+Zero-Shot,zero_shot,Zero-Shot,ag_news,AG News,0.3993,0.3468,N/A,0,0.0,0.0,14.833,0.0
+Zero-Shot,zero_shot,Zero-Shot,amazon,Amazon Polarity,0.6447,0.6108,N/A,0,0.0,0.0,13.16,0.0
+Full FT,full_ft,Upper Bound,sst2,SST-2,0.8991,0.8978,1.34,66955010,100.0,68.78,0.126,2225.6
+Full FT,full_ft,Upper Bound,ag_news,AG News,0.9195,0.9191,1.28,66956548,100.002,72.53,0.127,2228.1
+Full FT,full_ft,Upper Bound,amazon,Amazon Polarity,0.909,0.909,1.28,66955010,100.0,77.82,0.136,2225.6
+LoRA r=4,lora_r4,PEFT-LoRA,sst2,SST-2,0.8406,0.838,1.48,665858,0.994,54.87,0.172,1206.9
+LoRA r=4,lora_r4,PEFT-LoRA,ag_news,AG News,0.8726,0.8717,1.91,667396,0.997,58.92,0.185,1194.4
+LoRA r=4,lora_r4,PEFT-LoRA,amazon,Amazon Polarity,0.8616,0.8616,1.47,665858,0.994,60.85,0.161,1194.4
+LoRA r=8,lora_r8,PEFT-LoRA,sst2,SST-2,0.8371,0.8342,1.49,739586,1.105,56.03,0.214,1196.8
+LoRA r=8,lora_r8,PEFT-LoRA,ag_news,AG News,0.8721,0.8712,1.87,741124,1.107,58.92,0.176,1195.1
+LoRA r=8,lora_r8,PEFT-LoRA,amazon,Amazon Polarity,0.8586,0.8586,1.47,739586,1.105,61.0,0.161,1195.0
+LoRA r=16,lora_r16,PEFT-LoRA,sst2,SST-2,0.8366,0.8336,1.5,887042,1.325,56.84,0.234,1198.3
+LoRA r=16,lora_r16,PEFT-LoRA,ag_news,AG News,0.8721,0.8712,1.86,888580,1.327,59.34,0.177,1198.3
+LoRA r=16,lora_r16,PEFT-LoRA,amazon,Amazon Polarity,0.8596,0.8596,1.48,887042,1.325,61.15,0.159,1198.3
+LoRA r=32,lora_r32,PEFT-LoRA,sst2,SST-2,0.8376,0.8348,1.49,1181954,1.765,57.06,0.218,1204.9
+LoRA r=32,lora_r32,PEFT-LoRA,ag_news,AG News,0.8711,0.8702,1.84,1183492,1.768,59.6,0.18,1204.9
+LoRA r=32,lora_r32,PEFT-LoRA,amazon,Amazon Polarity,0.8611,0.8611,1.48,1181954,1.765,61.09,0.168,1204.9
+Adapter,adapter,PEFT-Adapter,sst2,SST-2,0.8531,0.8516,1.44,1209602,1.807,58.25,0.162,1283.3
+Adapter,adapter,PEFT-Adapter,ag_news,AG News,0.8666,0.8648,2.05,1211140,1.809,59.98,0.169,1283.3
+Adapter,adapter,PEFT-Adapter,amazon,Amazon Polarity,0.8626,0.8626,1.41,1209602,1.807,61.56,0.179,1283.3
+Prompt Tuning,prompt_tuning,PEFT-Prompt,sst2,SST-2,0.5992,0.4596,1.91,607490,0.907,51.86,0.119,1136.0
+Prompt Tuning,prompt_tuning,PEFT-Prompt,ag_news,AG News,0.8711,0.8701,2.61,609028,0.91,54.84,0.117,1138.2
+Prompt Tuning,prompt_tuning,PEFT-Prompt,amazon,Amazon Polarity,0.7346,0.7332,1.87,607490,0.907,56.68,0.128,1138.2
+Soft Prompt,soft_prompt,PEFT-Prompt,sst2,SST-2,0.6142,0.4947,1.91,607490,0.907,52.11,0.164,1138.0
+Soft Prompt,soft_prompt,PEFT-Prompt,ag_news,AG News,0.8721,0.8711,2.36,609028,0.91,54.97,0.128,1138.2
+Soft Prompt,soft_prompt,PEFT-Prompt,amazon,Amazon Polarity,0.7581,0.7571,1.82,607490,0.907,56.63,0.115,1138.2

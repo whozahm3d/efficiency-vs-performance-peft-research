@@ -1,0 +1,25 @@
+method,method_key,method_type,dataset,trainable_params,pct_of_full_ft,train_time_s,inference_ms,peak_gpu_mb,f1_macro,accuracy
+Full FT,full_ft,Upper Bound,sst2,66955010,100.0,68.78,0.126,2225.6,0.8978,0.8991
+Full FT,full_ft,Upper Bound,ag_news,66956548,100.002,72.53,0.127,2228.1,0.9191,0.9195
+Full FT,full_ft,Upper Bound,amazon,66955010,100.0,77.82,0.136,2225.6,0.909,0.909
+LoRA r=4,lora_r4,PEFT-LoRA,sst2,665858,0.994,54.87,0.172,1206.9,0.838,0.8406
+LoRA r=4,lora_r4,PEFT-LoRA,ag_news,667396,0.997,58.92,0.185,1194.4,0.8717,0.8726
+LoRA r=4,lora_r4,PEFT-LoRA,amazon,665858,0.994,60.85,0.161,1194.4,0.8616,0.8616
+LoRA r=8,lora_r8,PEFT-LoRA,sst2,739586,1.105,56.03,0.214,1196.8,0.8342,0.8371
+LoRA r=8,lora_r8,PEFT-LoRA,ag_news,741124,1.107,58.92,0.176,1195.1,0.8712,0.8721
+LoRA r=8,lora_r8,PEFT-LoRA,amazon,739586,1.105,61.0,0.161,1195.0,0.8586,0.8586
+LoRA r=16,lora_r16,PEFT-LoRA,sst2,887042,1.325,56.84,0.234,1198.3,0.8336,0.8366
+LoRA r=16,lora_r16,PEFT-LoRA,ag_news,888580,1.327,59.34,0.177,1198.3,0.8712,0.8721
+LoRA r=16,lora_r16,PEFT-LoRA,amazon,887042,1.325,61.15,0.159,1198.3,0.8596,0.8596
+LoRA r=32,lora_r32,PEFT-LoRA,sst2,1181954,1.765,57.06,0.218,1204.9,0.8348,0.8376
+LoRA r=32,lora_r32,PEFT-LoRA,ag_news,1183492,1.768,59.6,0.18,1204.9,0.8702,0.8711
+LoRA r=32,lora_r32,PEFT-LoRA,amazon,1181954,1.765,61.09,0.168,1204.9,0.8611,0.8611
+Adapter,adapter,PEFT-Adapter,sst2,1209602,1.807,58.25,0.162,1283.3,0.8516,0.8531
+Adapter,adapter,PEFT-Adapter,ag_news,1211140,1.809,59.98,0.169,1283.3,0.8648,0.8666
+Adapter,adapter,PEFT-Adapter,amazon,1209602,1.807,61.56,0.179,1283.3,0.8626,0.8626
+Prompt Tuning,prompt_tuning,PEFT-Prompt,sst2,607490,0.907,51.86,0.119,1136.0,0.4596,0.5992
+Prompt Tuning,prompt_tuning,PEFT-Prompt,ag_news,609028,0.91,54.84,0.117,1138.2,0.8701,0.8711
+Prompt Tuning,prompt_tuning,PEFT-Prompt,amazon,607490,0.907,56.68,0.128,1138.2,0.7332,0.7346
+Soft Prompt,soft_prompt,PEFT-Prompt,sst2,607490,0.907,52.11,0.164,1138.0,0.4947,0.6142
+Soft Prompt,soft_prompt,PEFT-Prompt,ag_news,609028,0.91,54.97,0.128,1138.2,0.8711,0.8721
+Soft Prompt,soft_prompt,PEFT-Prompt,amazon,607490,0.907,56.63,0.115,1138.2,0.7571,0.7581

@@ -1,0 +1,5 @@
+model,dataset,mean_ann1,mean_ann2,kappa,n
+Full FT,sst2,3.4,3.68,0.0566,50
+LoRA r=8,sst2,3.3,3.62,0.126,50
+Adapter,sst2,3.26,3.54,0.0807,50
+Prompt Tuning,sst2,2.84,3.16,0.1508,50

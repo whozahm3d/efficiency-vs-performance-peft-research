@@ -1,0 +1,70 @@
+timestamp,model,dataset,seed,backbone,epochs,lr,batch_size,lora_r,lora_alpha,adapter_dim,n_prompt_tokens,accuracy,f1_macro,trainable_params,train_time_s,inference_ms,ppl_proxy,notes
+2026-04-24 13:47:19,TF-IDF + LogReg,sst2,42,TF-IDF,3,2e-05,32,N/A,N/A,N/A,N/A,0.7946,0.7874,30662,0.3,0.0002,N/A,Phase 4 baseline
+2026-04-24 13:47:20,TF-IDF + LogReg,ag_news,42,TF-IDF,3,2e-05,32,N/A,N/A,N/A,N/A,0.8956,0.8948,80000,1.74,0.0008,N/A,Phase 4 baseline
+2026-04-24 13:47:21,TF-IDF + LogReg,amazon,42,TF-IDF,3,2e-05,32,N/A,N/A,N/A,N/A,0.8436,0.8434,40000,0.38,0.0004,N/A,Phase 4 baseline
+2026-04-24 13:47:33,TF-IDF + SVM,sst2,42,TF-IDF,3,2e-05,32,N/A,N/A,N/A,N/A,0.8151,0.8112,30662,0.03,0.0001,N/A,Phase 4 baseline
+2026-04-24 13:47:33,TF-IDF + SVM,ag_news,42,TF-IDF,3,2e-05,32,N/A,N/A,N/A,N/A,0.8986,0.8978,80000,0.17,0.0004,N/A,Phase 4 baseline
+2026-04-24 13:47:33,TF-IDF + SVM,amazon,42,TF-IDF,3,2e-05,32,N/A,N/A,N/A,N/A,0.8451,0.8448,40000,0.06,0.0003,N/A,Phase 4 baseline
+2026-04-24 13:54:26,Zero-Shot (MLM heuristic),sst2,42,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.6882,0.6465,0,0.0,12.181,N/A,"MLM-score heuristic, NOT true zero-shot"
+2026-04-24 13:54:56,Zero-Shot (MLM heuristic),ag_news,42,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.3993,0.3468,0,0.0,14.833,N/A,"MLM-score heuristic, NOT true zero-shot"
+2026-04-24 13:55:22,Zero-Shot (MLM heuristic),amazon,42,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.6447,0.6108,0,0.0,13.16,N/A,"MLM-score heuristic, NOT true zero-shot"
+2026-04-24 13:59:02,Full Fine-Tuning,sst2,42,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.8991,0.8978,66955010,68.78,0.126,1.34,All params unfrozen
+2026-04-24 14:00:19,Full Fine-Tuning,ag_news,42,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.9195,0.9191,66956548,72.53,0.127,1.2802,All params unfrozen
+2026-04-24 14:01:41,Full Fine-Tuning,amazon,42,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.909,0.909,66955010,77.82,0.136,1.2836,All params unfrozen
+2026-04-24 14:04:10,LoRA_r4,sst2,42,distilbert-base-uncased,3,2e-05,32,4,16,N/A,N/A,0.8406,0.838,665858,54.87,0.172,1.4778,LoRA rank=4
+2026-04-24 14:05:10,LoRA_r8,sst2,42,distilbert-base-uncased,3,2e-05,32,8,16,N/A,N/A,0.8371,0.8342,739586,56.03,0.214,1.491,LoRA rank=8
+2026-04-24 14:06:12,LoRA_r16,sst2,42,distilbert-base-uncased,3,2e-05,32,16,16,N/A,N/A,0.8366,0.8336,887042,56.84,0.234,1.5009,LoRA rank=16
+2026-04-24 14:07:14,LoRA_r32,sst2,42,distilbert-base-uncased,3,2e-05,32,32,16,N/A,N/A,0.8376,0.8348,1181954,57.06,0.218,1.4914,LoRA rank=32
+2026-04-24 14:08:17,LoRA_r4,ag_news,42,distilbert-base-uncased,3,2e-05,32,4,16,N/A,N/A,0.8726,0.8717,667396,58.92,0.185,1.9075,LoRA rank=4
+2026-04-24 14:09:21,LoRA_r8,ag_news,42,distilbert-base-uncased,3,2e-05,32,8,16,N/A,N/A,0.8721,0.8712,741124,58.92,0.176,1.8673,LoRA rank=8
+2026-04-24 14:10:25,LoRA_r16,ag_news,42,distilbert-base-uncased,3,2e-05,32,16,16,N/A,N/A,0.8721,0.8712,888580,59.34,0.177,1.856,LoRA rank=16
+2026-04-24 14:11:30,LoRA_r32,ag_news,42,distilbert-base-uncased,3,2e-05,32,32,16,N/A,N/A,0.8711,0.8702,1183492,59.6,0.18,1.8439,LoRA rank=32
+2026-04-24 14:12:35,LoRA_r4,amazon,42,distilbert-base-uncased,3,2e-05,32,4,16,N/A,N/A,0.8616,0.8616,665858,60.85,0.161,1.4662,LoRA rank=4
+2026-04-24 14:13:41,LoRA_r8,amazon,42,distilbert-base-uncased,3,2e-05,32,8,16,N/A,N/A,0.8586,0.8586,739586,61.0,0.161,1.4679,LoRA rank=8
+2026-04-24 14:14:47,LoRA_r16,amazon,42,distilbert-base-uncased,3,2e-05,32,16,16,N/A,N/A,0.8596,0.8596,887042,61.15,0.159,1.4829,LoRA rank=16
+2026-04-24 14:15:53,LoRA_r32,amazon,42,distilbert-base-uncased,3,2e-05,32,32,16,N/A,N/A,0.8611,0.8611,1181954,61.09,0.168,1.4754,LoRA rank=32
+2026-04-24 14:17:16,Adapter Tuning,sst2,42,distilbert-base-uncased,3,2e-05,32,N/A,N/A,64,N/A,0.8531,0.8516,1209602,58.25,0.162,1.4442,Houlsby adapters after attn+FFN per layer
+2026-04-24 14:18:21,Adapter Tuning,ag_news,42,distilbert-base-uncased,3,2e-05,32,N/A,N/A,64,N/A,0.8666,0.8648,1211140,59.98,0.169,2.0474,Houlsby adapters after attn+FFN per layer
+2026-04-24 14:19:27,Adapter Tuning,amazon,42,distilbert-base-uncased,3,2e-05,32,N/A,N/A,64,N/A,0.8626,0.8626,1209602,61.56,0.179,1.4149,Houlsby adapters after attn+FFN per layer
+2026-04-24 14:20:32,Prompt Tuning (vocab-init),sst2,42,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,20,0.5992,0.4596,607490,51.86,0.119,1.909,"ManualSoftPrompt, vocab init"
+2026-04-24 14:21:29,Soft Prompt Tuning (random-init),sst2,42,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,20,0.6142,0.4947,607490,52.11,0.164,1.9069,"ManualSoftPrompt, random init"
+2026-04-24 14:22:28,Prompt Tuning (vocab-init),ag_news,42,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,20,0.8711,0.8701,609028,54.84,0.117,2.6066,"ManualSoftPrompt, vocab init"
+2026-04-24 14:23:28,Soft Prompt Tuning (random-init),ag_news,42,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,20,0.8721,0.8711,609028,54.97,0.128,2.3598,"ManualSoftPrompt, random init"
+2026-04-24 14:24:29,Prompt Tuning (vocab-init),amazon,42,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,20,0.7346,0.7332,607490,56.68,0.128,1.8737,"ManualSoftPrompt, vocab init"
+2026-04-24 14:25:30,Soft Prompt Tuning (random-init),amazon,42,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,20,0.7581,0.7571,607490,56.63,0.115,1.8177,"ManualSoftPrompt, random init"
+2026-04-24 14:30:14,full_ft,sst2,42,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.8931,0.8917,66955010,68.59,0.119,1.3399,Multi-seed run seed=42
+2026-04-24 14:31:30,full_ft,sst2,0,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.8896,0.8881,66955010,70.91,0.129,1.3411,Multi-seed run seed=0
+2026-04-24 14:32:47,full_ft,sst2,123,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.8921,0.8907,66955010,72.5,0.123,1.3318,Multi-seed run seed=123
+2026-04-24 14:34:07,full_ft,ag_news,42,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.919,0.9186,66956548,75.46,0.166,1.2787,Multi-seed run seed=42
+2026-04-24 14:35:27,full_ft,ag_news,0,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.92,0.9196,66956548,76.34,0.123,1.2727,Multi-seed run seed=0
+2026-04-24 14:36:49,full_ft,ag_news,123,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.915,0.9143,66956548,76.57,0.118,1.2802,Multi-seed run seed=123
+2026-04-24 14:38:12,full_ft,amazon,42,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.907,0.907,66955010,79.18,0.129,1.2895,Multi-seed run seed=42
+2026-04-24 14:39:37,full_ft,amazon,0,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.908,0.908,66955010,79.1,0.114,1.2901,Multi-seed run seed=0
+2026-04-24 14:41:00,full_ft,amazon,123,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.908,0.908,66955010,79.24,0.127,1.2902,Multi-seed run seed=123
+2026-04-24 14:42:03,lora_r8,sst2,42,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.8351,0.8322,739586,58.11,0.167,1.5236,Multi-seed run seed=42
+2026-04-24 14:43:06,lora_r8,sst2,0,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.8356,0.8326,739586,58.0,0.168,1.4879,Multi-seed run seed=0
+2026-04-24 14:44:09,lora_r8,sst2,123,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.8311,0.8276,739586,58.22,0.16,1.5289,Multi-seed run seed=123
+2026-04-24 14:45:13,lora_r8,ag_news,42,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.8606,0.8592,741124,59.4,0.173,1.9078,Multi-seed run seed=42
+2026-04-24 14:46:18,lora_r8,ag_news,0,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.8701,0.8692,741124,59.47,0.223,1.857,Multi-seed run seed=0
+2026-04-24 14:47:22,lora_r8,ag_news,123,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.8651,0.8639,741124,59.4,0.169,1.921,Multi-seed run seed=123
+2026-04-24 14:48:28,lora_r8,amazon,42,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.8576,0.8576,739586,60.87,0.155,1.5174,Multi-seed run seed=42
+2026-04-24 14:49:33,lora_r8,amazon,0,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.8591,0.8591,739586,60.96,0.17,1.4656,Multi-seed run seed=0
+2026-04-24 14:50:39,lora_r8,amazon,123,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.8621,0.8621,739586,61.16,0.225,1.5083,Multi-seed run seed=123
+2026-04-24 14:51:44,adapter,sst2,42,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.8501,0.8486,1209602,59.81,0.178,1.4542,Multi-seed run seed=42
+2026-04-24 14:52:49,adapter,sst2,0,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.8546,0.8529,1209602,59.77,0.161,1.4438,Multi-seed run seed=0
+2026-04-24 14:53:53,adapter,sst2,123,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.8511,0.8494,1209602,59.85,0.173,1.4496,Multi-seed run seed=123
+2026-04-24 14:54:59,adapter,ag_news,42,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.8386,0.8376,1211140,60.79,0.268,2.0295,Multi-seed run seed=42
+2026-04-24 14:56:05,adapter,ag_news,0,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.8696,0.8682,1211140,60.97,0.163,2.0554,Multi-seed run seed=0
+2026-04-24 14:57:11,adapter,ag_news,123,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.8136,0.8056,1211140,60.95,0.161,2.0202,Multi-seed run seed=123
+2026-04-24 14:58:18,adapter,amazon,42,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.8696,0.8696,1209602,62.63,0.176,1.4192,Multi-seed run seed=42
+2026-04-24 14:59:26,adapter,amazon,0,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.8656,0.8656,1209602,62.58,0.165,1.4116,Multi-seed run seed=0
+2026-04-24 15:00:33,adapter,amazon,123,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.8656,0.8656,1209602,62.33,0.252,1.409,Multi-seed run seed=123
+2026-04-24 15:01:31,prompt_tuning,sst2,42,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.5837,0.423,607490,53.27,0.126,1.9088,Multi-seed run seed=42
+2026-04-24 15:02:29,prompt_tuning,sst2,0,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.6077,0.4792,607490,53.23,0.117,1.9079,Multi-seed run seed=0
+2026-04-24 15:03:26,prompt_tuning,sst2,123,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.5917,0.4445,607490,53.11,0.164,1.9177,Multi-seed run seed=123
+2026-04-24 15:04:27,prompt_tuning,ag_news,42,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.8341,0.8323,609028,55.61,0.135,2.6622,Multi-seed run seed=42
+2026-04-24 15:05:27,prompt_tuning,ag_news,0,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.8706,0.8696,609028,55.29,0.118,2.6046,Multi-seed run seed=0
+2026-04-24 15:06:27,prompt_tuning,ag_news,123,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.8596,0.8574,609028,55.81,0.111,2.5754,Multi-seed run seed=123
+2026-04-24 15:07:28,prompt_tuning,amazon,42,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.7616,0.7603,607490,56.7,0.118,1.86,Multi-seed run seed=42
+2026-04-24 15:08:29,prompt_tuning,amazon,0,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.7486,0.7482,607490,56.69,0.116,1.8738,Multi-seed run seed=0
+2026-04-24 15:09:30,prompt_tuning,amazon,123,distilbert-base-uncased,3,2e-05,32,N/A,N/A,N/A,N/A,0.7621,0.7616,607490,56.7,0.114,1.8577,Multi-seed run seed=123

@@ -1,0 +1,4 @@
+dataset,mean_words,median_words,p95_words,min,max
+sst2,9.5,7.0,26.0,1,51
+ag_news,37.7,37.0,52.0,11,93
+amazon,64.0,67.0,100.0,5,115

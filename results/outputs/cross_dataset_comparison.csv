@@ -1,0 +1,34 @@
+method,method_key,dataset,f1_macro,gap_vs_full_ft_pp
+TF-IDF LR,tfidf_lr,sst2,0.7874,11.04
+TF-IDF LR,tfidf_lr,ag_news,0.8948,2.43
+TF-IDF LR,tfidf_lr,amazon,0.8434,6.56
+TF-IDF SVM,tfidf_svm,sst2,0.8112,8.66
+TF-IDF SVM,tfidf_svm,ag_news,0.8978,2.13
+TF-IDF SVM,tfidf_svm,amazon,0.8448,6.42
+Zero-Shot,zero_shot,sst2,0.6465,25.13
+Zero-Shot,zero_shot,ag_news,0.3468,57.23
+Zero-Shot,zero_shot,amazon,0.6108,29.82
+Full FT,full_ft,sst2,0.8978,0.0
+Full FT,full_ft,ag_news,0.9191,0.0
+Full FT,full_ft,amazon,0.909,0.0
+LoRA r=4,lora_r4,sst2,0.838,5.98
+LoRA r=4,lora_r4,ag_news,0.8717,4.74
+LoRA r=4,lora_r4,amazon,0.8616,4.74
+LoRA r=8,lora_r8,sst2,0.8342,6.36
+LoRA r=8,lora_r8,ag_news,0.8712,4.79
+LoRA r=8,lora_r8,amazon,0.8586,5.04
+LoRA r=16,lora_r16,sst2,0.8336,6.42
+LoRA r=16,lora_r16,ag_news,0.8712,4.79
+LoRA r=16,lora_r16,amazon,0.8596,4.94
+LoRA r=32,lora_r32,sst2,0.8348,6.3
+LoRA r=32,lora_r32,ag_news,0.8702,4.89
+LoRA r=32,lora_r32,amazon,0.8611,4.79
+Adapter,adapter,sst2,0.8516,4.62
+Adapter,adapter,ag_news,0.8648,5.43
+Adapter,adapter,amazon,0.8626,4.64
+Prompt T.,prompt_tuning,sst2,0.4596,43.82
+Prompt T.,prompt_tuning,ag_news,0.8701,4.9
+Prompt T.,prompt_tuning,amazon,0.7332,17.58
+Soft Prompt,soft_prompt,sst2,0.4947,40.31
+Soft Prompt,soft_prompt,ag_news,0.8711,4.8
+Soft Prompt,soft_prompt,amazon,0.7571,15.19

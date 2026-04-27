@@ -1,0 +1,11 @@
+Method,Backbone,Epochs,LR,BatchSize,MaxLen,Extra
+Full FT,distilbert-base-uncased,3,2e-05,32,128,All params unfrozen
+LoRA r=4,distilbert-base-uncased,3,2e-05,32,128,"r=4,alpha=16,dropout=0.1,targets=q_lin+v_lin"
+LoRA r=8,distilbert-base-uncased,3,2e-05,32,128,"r=8,alpha=16,dropout=0.1,targets=q_lin+v_lin"
+LoRA r=16,distilbert-base-uncased,3,2e-05,32,128,"r=16,alpha=16,dropout=0.1"
+LoRA r=32,distilbert-base-uncased,3,2e-05,32,128,"r=32,alpha=16,dropout=0.1"
+Adapter,distilbert-base-uncased,3,2e-05,32,128,"bottleneck_dim=64,after_attn+ffn"
+Prompt Tuning,distilbert-base-uncased,3,2e-05,32,128,"k=20,vocab_init"
+Soft Prompt,distilbert-base-uncased,3,2e-05,32,128,"k=20,random_init"
+TF-IDF+LR,N/A,N/A,N/A,N/A,N/A,"C=1.0,max_feat=20K,ngram(1,2),sublinear_tf"
+TF-IDF+SVM,N/A,N/A,N/A,N/A,N/A,"C=1.0,LinearSVC,max_iter=2000"

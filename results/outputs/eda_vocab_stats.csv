@@ -1,0 +1,4 @@
+dataset,vocab_size,total_tokens,avg_tokens_per_sample,top_bigram
+sst2,8664,59012,8.4,too many
+ag_news,21046,261651,37.4,lt gt
+amazon,25062,426621,61.0,read book

@@ -1,0 +1,4 @@
+hypothesis,description,result,evidence_summary
+H1,LoRA achieves <=3pp F1 gap vs Full FT AND <10% params on >=2 datasets,False,"{'passing_rank': None, 'per_dataset': {'sst2': {'f1_gap': 0.063, 'pct_params': 1.77, 'passed': False}, 'ag_news': {'f1_gap': 0.0489, 'pct_params': 1.77, 'passed': False}, 'amazon': {'f1_gap': 0.0479, 'pct_params': 1.77, 'passed': False}}}"
+H2,Adapter Tuning outperforms Prompt Tuning on all three datasets,False,"{'sst2': {'adapter_f1': 0.8503, 'prompt_f1': 0.4489, 'passed': True}, 'ag_news': {'adapter_f1': 0.8371, 'prompt_f1': 0.8531, 'passed': False}, 'amazon': {'adapter_f1': 0.8669, 'prompt_f1': 0.7567, 'passed': True}}"
+H3,LoRA (r=8) at 50% data achieves >=90% of full-data F1 on SST-2,False,"{'f1_50pct': 0.5569, 'f1_100pct': 0.8342, 'threshold': 0.7508, 'passed': False}"
