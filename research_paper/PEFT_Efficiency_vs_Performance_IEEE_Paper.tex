@@ -322,7 +322,7 @@ Figure~\ref{fig:training_curves} shows training dynamics. The stable convergence
 
 \subsubsection{Hyperparameters}
 
-Table~\ref{tab:hyperparams} lists all hyperparameters. Critically, a \textbf{uniform learning rate of $2{\times}10^{-5}$} was applied to \emph{all} methods including all PEFT configurations---both PEFT and Full FT use the same learning rate. Experiments ran on Google Colab (NVIDIA T4 GPU) using HuggingFace PEFT v0.10.0.
+Table~\ref{tab:hyperparams} lists all hyperparameters. Critically, a \textbf{uniform learning rate of $2{\times}10^{-5}$} was applied to \emph{all} methods including all PEFT configurations---both PEFT and Full FT share the same learning rate. This is a deliberate design choice to ensure a controlled comparison, but it should be noted that PEFT methods often benefit from \emph{higher} learning rates ($1{\times}10^{-4}$ to $3{\times}10^{-4}$) in practice, since only a small fraction of parameters are updated and larger gradient steps are needed to meaningfully shift the adapted representations. The uniform LR may therefore \textbf{underestimate the maximum achievable F1 for PEFT methods}; the true Pareto frontier may shift further towards PEFT configurations under LR-optimised settings. This is acknowledged as a confounding factor and reserved for future work. Experiments ran on Google Colab (NVIDIA T4 GPU) using HuggingFace PEFT v0.10.0.
 
 \begin{table}[ht]
 \centering
@@ -479,7 +479,16 @@ TF-IDF+SVM & --- & 81.1 & 89.8 & 84.5\\
 \end{tabular}
 \end{table}
 
-The gap between our 10K-capped Full FT (89.0\% SST-2) and full-dataset DistilBERT Full FT (91.3\%) is 2.3\,pp, confirming that the data cap introduces a measurable but bounded performance penalty. The gap between our LoRA $r{=}4$ (83.8\%) and full-dataset RoBERTa-large SOTA (96.4\%) reflects both model scale and data limitation---reducing either gap is straightforward by scaling up, though outside this study's compute budget. Both methods perform competitively on AG News (F1$\approx$0.895--0.898), approaching several PEFT configurations, confirming that topic classification is partially solvable with bag-of-words features. On SST-2, performance drops to 0.787--0.811, reflecting the importance of word order and contextual cues for fine-grained sentiment analysis that TF-IDF representations cannot capture. Amazon Polarity yields intermediate results (0.843--0.845); longer texts provide richer lexical signals to the TF-IDF representation. These results establish a meaningful non-neural lower bound: any PEFT method must comfortably exceed these baselines to justify its additional complexity and compute cost.
+The gap between our 10K-capped Full FT (89.0\% SST-2) and full-dataset DistilBERT Full FT (91.3\%) is 2.3\,pp, confirming that the data cap introduces a measurable but bounded performance penalty. The gap between our LoRA $r{=}4$ (83.8\%) and full-dataset RoBERTa-large SOTA (96.4\%) reflects both model scale and data limitation---reducing either gap is straightforward by scaling up, though outside this study's compute budget.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\columnwidth]{figures/p5_baseline_progression.png}
+\caption{Baseline progression: stepwise improvement in Macro F1 from TF-IDF baselines through zero-shot heuristic to Full FT and best PEFT configuration (LoRA $r{=}4$) across all three datasets. Each step represents a meaningful modelling upgrade. The jump from TF-IDF+SVM to Full FT (SST-2: $+7.9$\,pp; AG News: $+2.0$\,pp; Amazon: $+6.3$\,pp) quantifies the value of contextual pre-training. The PEFT gap below Full FT (SST-2: $-5.2$\,pp) is the efficiency trade-off.}
+\label{fig:progression}
+\end{figure}
+
+Figure~\ref{fig:progression} visualises the full performance progression. The zero-shot MLM heuristic performs substantially below all trained methods, confirming that no-training approaches are insufficient for these tasks. The largest single gain comes from moving from TF-IDF+SVM to Full FT, validating the core premise of pre-trained language models. LoRA $r{=}4$ captures most of this gain at a fraction of the cost. Both methods perform competitively on AG News (F1$\approx$0.895--0.898), approaching several PEFT configurations, confirming that topic classification is partially solvable with bag-of-words features. On SST-2, performance drops to 0.787--0.811, reflecting the importance of word order and contextual cues for fine-grained sentiment analysis that TF-IDF representations cannot capture. Amazon Polarity yields intermediate results (0.843--0.845); longer texts provide richer lexical signals to the TF-IDF representation. These results establish a meaningful non-neural lower bound: any PEFT method must comfortably exceed these baselines to justify its additional complexity and compute cost.
 
 \subsection{Full Fine-Tuning Training Dynamics}
 
@@ -521,6 +530,8 @@ Table~\ref{tab:main_results} presents complete results for all eleven configurat
 \end{figure}
 
 Figure~\ref{fig:peft_cm} shows PEFT confusion matrices on SST-2. LoRA $r{=}8$ and Adapter show near-symmetric confusion indicating a genuine learned decision boundary. In contrast, Prompt Tuning's matrix shows \textbf{341 false negatives vs.\ only 13 false positives}---a 26:1 asymmetry that directly visualises the majority-class collapse. Soft Prompt Tuning is less extreme (296 FN, 49 FP, ratio 6:1) but shows the same directional pattern. This confusion matrix evidence conclusively distinguishes a \emph{systematic structural failure} from statistical noise or learning instability.
+
+\textbf{Soft Prompt vs.\ Prompt Tuning: Counterintuitive Reversal.} Soft Prompt Tuning (random Gaussian initialisation) consistently \emph{outperforms} vocabulary-anchored Prompt Tuning across all three datasets: SST-2 ($+4.6$\,pp: 0.4947 vs.\ 0.4489), AG News ($+1.8$\,pp: 0.8711 vs.\ 0.8531), and Amazon Polarity ($+0.04$\,pp: 0.7571 vs.\ 0.7567). This is counterintuitive---one would expect that initialising prompt tokens from the model's vocabulary (which provides semantically meaningful starting points) would outperform random Gaussian initialisation. We hypothesise two explanations. First, vocabulary-anchored initialisation constrains the optimisation trajectory to a subspace near discrete token embeddings, potentially preventing the prompt tokens from reaching a continuous embedding that better partitions the classifier's input space. Second, in the context-crowding regime (SST-2 avg.\ 13.4 tokens), even small differences in the starting point of the 20 prompt vectors can significantly affect how the frozen backbone distributes attention between prompt and content tokens. Random initialisation may, by chance, produce prompt vectors that interfere less with content-token attention than vocabulary-anchored embeddings selected from frequent tokens. This reversal is an open empirical finding that warrants systematic investigation across input lengths and model scales.
 
 \begin{table*}[t]
 \centering
@@ -580,6 +591,15 @@ Figure~\ref{fig:pareto} shows the Pareto frontier of Macro F1 versus trainable-p
 \end{figure}
 
 \subsection{Latency, Training Time, and GPU Memory}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\columnwidth]{figures/gpu_memory_vs_f1.png}
+\caption{GPU memory vs.\ Macro F1 trade-off (SST-2, seed 42). Bubble size proportional to trainable-parameter count. The ideal region (upper-left) combines high F1 with low GPU memory. LoRA $r{=}4$ is the only method in the intersection of the high-F1 zone (F1$>$0.82) and the low-memory PEFT zone ($<$1{,}350\,MB). Prompt/Soft Prompt occupy the lowest memory but collapse in F1, illustrating that memory efficiency alone does not guarantee task utility. Full FT dominates F1 but requires 85\% more GPU memory than LoRA configurations.}
+\label{fig:gpu_vs_f1}
+\end{figure}
+
+Figure~\ref{fig:gpu_vs_f1} shows the GPU memory vs.\ Macro F1 trade-off. LoRA $r{=}4$ uniquely occupies the intersection of the high-F1 and low-memory zones, requiring only 1{,}207\,MB---$45\%$ less than Full FT (2{,}226\,MB)---while achieving 83.8\% F1. Adapter Tuning uses slightly more memory than LoRA (1{,}283\,MB) due to bottleneck module activations stored at inference time. Prompt and Soft Prompt Tuning require the least GPU memory (1{,}136\,MB) but their catastrophically low F1 on SST-2 makes the memory saving irrelevant for this task.
 
 \begin{figure}[ht]
 \centering
@@ -694,7 +714,14 @@ The 95\% bootstrap CIs (Figure~\ref{fig:bootstrap}) show non-overlapping interva
 \subsection{Training Stability}
 \label{sec:stability}
 
-Adapter Tuning achieves the lowest cross-seed variance on \emph{binary} tasks (SST-2 std$=0.0023$; Amazon std$=0.0023$)---the most stable PEFT method for binary sentiment classification. This stability is practically valuable in production settings where reproducible results across training runs are essential. However, this stability \textbf{does not} generalise to multi-class tasks: Adapter on AG News exhibits the highest cross-seed variance of any evaluated method (std$=0.031$, spread 0.806--0.868 across seeds), indicating strong initialisation sensitivity when adapting simultaneously to four class boundaries. Prompt Tuning similarly shows high variance on SST-2 (std$=0.028$), confirming that both methods with high instability share a common characteristic---they are fundamentally ill-suited to their respective task conditions. Full FT and LoRA $r{=}8$ maintain high consistency across all three datasets (std ${\leq}0.002$ and ${\leq}0.005$, respectively), making them the most reproducible choices regardless of task type.
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\columnwidth]{figures/p8_mean_std_f1.png}
+\caption{Mean $\pm$ std Macro F1 across three seeds for all multi-seed methods and datasets. Error bars represent one standard deviation. Full FT and LoRA $r{=}8$ show the smallest error bars throughout. Adapter on AG News shows the widest error bar ($\pm0.031$), confirming its initialisation sensitivity in the multi-class setting. Prompt Tuning on SST-2 shows high variance ($\pm0.028$) at an already catastrophically low mean F1.}
+\label{fig:mean_std_f1}
+\end{figure}
+
+Figure~\ref{fig:mean_std_f1} shows mean$\pm$std F1 for all multi-seed methods. Adapter Tuning achieves the lowest cross-seed variance on \emph{binary} tasks (SST-2 std$=0.0023$; Amazon std$=0.0023$)---the most stable PEFT method for binary sentiment classification. This stability is practically valuable in production settings where reproducible results across training runs are essential. However, this stability \textbf{does not} generalise to multi-class tasks: Adapter on AG News exhibits the highest cross-seed variance of any evaluated method (std$=0.031$, spread 0.806--0.868 across seeds), indicating strong initialisation sensitivity when adapting simultaneously to four class boundaries. Prompt Tuning similarly shows high variance on SST-2 (std$=0.028$), confirming that both methods with high instability share a common characteristic---they are fundamentally ill-suited to their respective task conditions. Full FT and LoRA $r{=}8$ maintain high consistency across all three datasets (std ${\leq}0.002$ and ${\leq}0.005$, respectively), making them the most reproducible choices regardless of task type.
 
 \subsection{Ablation Studies}
 \label{sec:ablation}
@@ -912,6 +939,22 @@ Table~\ref{tab:human_eval} shows results. Full FT receives the highest ratings (
 
 LoRA injects adaptation directly into the attention weight matrices---the primary mechanism for contextual token reweighting---enabling semantic reorientation with minimal parameters. Adapters act post-hoc on sub-layer outputs via a bottleneck module, a less direct path to attention modification. Prompt Tuning adds conditioning only in the input embedding space; small frozen models cannot propagate this signal effectively through six transformer layers for short binary-sentiment sequences.
 
+\subsection{What PEFT Cannot Do}
+
+While PEFT methods offer compelling efficiency advantages, our results collectively define four \emph{hard failure conditions} that practitioners must understand before deployment:
+
+\begin{enumerate}
+  \item \textbf{PEFT cannot handle short inputs with prompt-based methods.} Prompt Tuning and Soft Prompt Tuning fail catastrophically on any binary task where average input length ${\lesssim}2k$ tokens. The context-crowding mechanism is architectural, not a hyperparameter issue---no amount of learning rate tuning or longer training will resolve it.
+
+  \item \textbf{PEFT (specifically LoRA) cannot reliably transfer across backbone architectures.} LoRA $r{=}8$ drops by up to 41.7\,pp when moved from DistilBERT to BERT-base due to attention-layer naming mismatches. Any production pipeline that switches backbone must completely re-validate all LoRA configurations before deployment.
+
+  \item \textbf{PEFT cannot fully close the negation gap with Full FT.} On SST-2, LoRA $r{=}8$ lags Full FT by 10.2\,pp on negation-present examples. This gap is persistent across all LoRA rank configurations and Adapter Tuning, indicating a fundamental representational limitation of partial-parameter updates on syntactically complex inputs.
+
+  \item \textbf{Adapter Tuning cannot achieve stable results on multi-class tasks.} Cross-seed variance of std$=0.031$ on AG News makes Adapter Tuning unreliable for 4-class classification without a large number of seeds. Practitioners requiring reproducible multi-class results should prefer LoRA $r{=}8$ (std$=0.005$ on AG News) or Full FT.
+\end{enumerate}
+
+These failure conditions are complementary to the success conditions encoded in Table~\ref{tab:decision} and together define a complete decision boundary for PEFT method selection.
+
 \subsection{Practical Recommendations}
 
 \begin{enumerate}
@@ -995,6 +1038,8 @@ We identify eight distinct threats to validity and scope limitations of this stu
   \item \textbf{INT8 accuracy limitation.} The INT8 quantisation experiment was inadvertently applied to pre-trained (not fine-tuned) weights. The reported speedup (1.18$\times$) and size reduction (58.6\%) are valid architecture-level properties, but the accuracy impact of post-training quantisation on fine-tuned checkpoints remains unvalidated.
 
   \item \textbf{Adapter multi-class instability.} Adapter Tuning's cross-seed variance on AG News (std$=0.031$) limits the reliability of multi-class performance claims. Additional seeds (beyond $n{=}3$) or alternative initialisation strategies should be investigated before deploying Adapter Tuning for multi-class tasks.
+
+  \item \textbf{Uniform learning rate across all methods.} All PEFT and Full FT configurations use an identical learning rate of $2{\times}10^{-5}$. PEFT methods are known to benefit from higher learning rates ($1{\times}10^{-4}$--$3{\times}10^{-4}$) because only a small fraction of parameters receive gradient updates. The uniform LR represents a controlled experimental choice but may underestimate the true performance ceiling of PEFT methods. LR-optimised PEFT configurations may produce a Pareto frontier that is more favourable to PEFT than what is reported here.
 
   \item \textbf{Human evaluation scale.} The human evaluation simulation involves 50 examples evaluated by 2 simulated annotators. This scale is indicative only; a full human evaluation study with ${\geq}100$ annotators per model would be required to draw statistically valid conclusions about perceived output quality.
 
